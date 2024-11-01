@@ -13,6 +13,7 @@ function Search() {
 		try {
 			const result = await fetchBooks(query);
 			setBooks(result);
+			console.log("Books fetched:", result);
 		} catch (err) {
 			console.log(err);
 		}
@@ -37,6 +38,25 @@ function Search() {
 					<MagnifyingGlassIcon className="h-5 w-5" />
 				</button>
 			</div>
+			<ul className="mt-4 flex flex-wrap gap-4">
+				{books.map((book) => (
+					<li
+						key={book.id}
+						className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 max-w-xs"
+					>
+						<h3 className="font-bold text-primary-900">
+							{book.volumeInfo.title}
+						</h3>
+						<p className="text-accent-800 font-semibold">
+							{book.volumeInfo.authors?.join(", ")}
+						</p>
+						<img
+							alt="book image"
+							src={book.volumeInfo.imageLinks?.thumbnail}
+						/>
+					</li>
+				))}
+			</ul>
 		</div>
 	);
 }

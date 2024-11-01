@@ -6,10 +6,13 @@ export async function fetchBooks(query) {
 	const res = await fetch(
 		`${GOOGLE_BOOKS_API_URL}?q=${query}&key=${apiKey}`
 	);
-	if (!response.ok) {
+	if (!res.ok) {
+		const errorData = await res.json();
+		console.error("Error fetching books:", errorData);
 		throw new Error("Failed to fetch books");
 	}
 
 	const data = await res.json();
+	console.log("API response data:", data);
 	return data.items || [];
 }
