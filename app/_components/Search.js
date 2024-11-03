@@ -4,6 +4,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import { fetchBooks } from "../_utils/fetchBooks";
 import { useKey } from "../_utils/useKey";
+import BooksList from "./BooksList";
 
 function Search() {
 	const [query, setQuery] = useState("");
@@ -38,25 +39,10 @@ function Search() {
 					<MagnifyingGlassIcon className="h-5 w-5" />
 				</button>
 			</div>
-			<ul className="mt-4 flex flex-wrap gap-4">
-				{books.map((book) => (
-					<li
-						key={book.id}
-						className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 max-w-xs"
-					>
-						<h3 className="font-bold text-primary-900">
-							{book.volumeInfo.title}
-						</h3>
-						<p className="text-accent-800 font-semibold">
-							{book.volumeInfo.authors?.join(", ")}
-						</p>
-						<img
-							alt="book image"
-							src={book.volumeInfo.imageLinks?.thumbnail}
-						/>
-					</li>
-				))}
-			</ul>
+			{
+				
+				<BooksList books={books} onSelectBook={setBooks} />
+			}
 		</div>
 	);
 }
