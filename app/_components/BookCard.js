@@ -14,7 +14,14 @@ function BookCard({ book, onSelectBook }) {
 			<img
 				alt="book image"
 				src={book.volumeInfo.imageLinks?.thumbnail}
+				className="mb-2"
 			/>
+			<button className="bg-primary-700 text-primary-50 rounded-lg px-2 py-1">
+				Add to shelf
+			</button>
+			<button className="bg-primary-500 text-primary-50 rounded-lg px-2 py-1 mt-1">
+				See more
+			</button>
 		</li>
 	);
 }
