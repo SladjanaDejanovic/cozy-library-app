@@ -10,8 +10,8 @@ function Navigation() {
 					</Link>
 				</li>
 				<li>
-					<Link href="/shelves" className=" hover:text-primary-400">
-						Shelves
+					<Link href="/library" className=" hover:text-primary-400">
+						Library
 					</Link>
 				</li>
 				<li>

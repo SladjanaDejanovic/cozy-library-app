@@ -26,7 +26,7 @@ export default function Page() {
 					</p>
 				</div>
 				<Link
-					href="/shelves"
+					href="/library"
 					className="bg-accent-500 px-8 py-6 text-primary-800 text-lg font-semibold hover:bg-accent-600 transition-all"
 				>
 					Make your library
