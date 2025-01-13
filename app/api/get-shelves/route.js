@@ -7,11 +7,14 @@ export async function GET() {
 	console.log("workinggggg");
 	try {
 		await dbConnect();
-		// const client = await dbConnect();
-		// const db = client.db("cozy_library");
-		// const shelves = await db.collection("shelves").find({});
 
-		const shelves = await Shelf.find();
+		// console.log("Checking model connection...");
+		// const allCollections = await mongoose.connection.db
+		// 	.listCollections()
+		// 	.toArray();
+		// console.log("Available collections in DB:", allCollections);
+
+		const shelves = await Shelf.find({});
 		console.log("Shelves fetched from DB:", shelves); // Debug
 
 		return NextResponse.json(shelves);
