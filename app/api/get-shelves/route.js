@@ -8,12 +8,6 @@ export async function GET() {
 	try {
 		await dbConnect();
 
-		// console.log("Checking model connection...");
-		// const allCollections = await mongoose.connection.db
-		// 	.listCollections()
-		// 	.toArray();
-		// console.log("Available collections in DB:", allCollections);
-
 		const shelves = await Shelf.find({});
 		console.log("Shelves fetched from DB:", shelves); // Debug
 

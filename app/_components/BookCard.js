@@ -18,7 +18,6 @@ function BookCard({ book, onSelectBook }) {
 					throw new Error(await res.text()); // Log the error body
 				}
 
-				// if (!res.ok) throw new Error("Failed to fetch shelves");
 				const data = await res.json();
 				console.log("Shelves:", data);
 
@@ -93,6 +92,7 @@ function BookCard({ book, onSelectBook }) {
 						</li>
 					))}
 				</ul>
+				<button onClick={() => setIsModalOpen(false)}>X</button>
 			</Modal>
 		</>
 	);

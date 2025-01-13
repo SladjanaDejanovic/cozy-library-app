@@ -10,17 +10,17 @@ import { usePathname } from "next/navigation";
 const navLinks = [
 	{
 		name: "Read",
-		href: "/shelves/read",
+		href: "/library/read",
 		icon: <HeartIcon className="h-5 w-5 text-primary-600" />,
 	},
 	{
 		name: "To-be-read",
-		href: "/shelves/to-be-read",
+		href: "/library/to-be-read",
 		icon: <SparklesIcon className="h-5 w-5 text-primary-600" />,
 	},
 	{
 		name: "Reading",
-		href: "/shelves/reading",
+		href: "/library/reading",
 		icon: <BookOpenIcon className="h-5 w-5 text-primary-600" />,
 	},
 ];
