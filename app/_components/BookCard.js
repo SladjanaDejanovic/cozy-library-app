@@ -74,7 +74,7 @@ function BookCard({ book, onSelectBook }) {
 					See more
 				</button>
 			</li>
-			<Modal
+			{/* <Modal
 				isOpen={isModalOpen}
 				onClose={() => setIsModalOpen(false)}
 			>
@@ -93,7 +93,12 @@ function BookCard({ book, onSelectBook }) {
 					))}
 				</ul>
 				<button onClick={() => setIsModalOpen(false)}>X</button>
-			</Modal>
+			</Modal> */}
+
+			<Modal
+				isOpen={isModalOpen}
+				onClose={() => setIsModalOpen(false)}
+			/>
 		</>
 	);
 }
