@@ -1,8 +1,21 @@
 "use client";
 import {
+	AcademicCapIcon,
+	BoltIcon,
+	BookmarkSquareIcon,
 	BookOpenIcon,
+	BuildingLibraryIcon,
+	CakeIcon,
+	CloudIcon,
+	FireIcon,
+	GiftIcon,
+	GlobeEuropeAfricaIcon,
 	HeartIcon,
+	LightBulbIcon,
+	PuzzlePieceIcon,
+	RocketLaunchIcon,
 	SparklesIcon,
+	StarIcon,
 } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -26,9 +39,94 @@ const navLinks = [
 	},
 ];
 
+const icons = [
+	{
+		name: "read",
+		icon: <HeartIcon className="h-5 w-5 text-primary-600" />,
+	},
+	{
+		name: "to-be-read",
+		icon: <SparklesIcon className="h-5 w-5 text-primary-600" />,
+	},
+	{
+		name: "reading",
+		icon: <BookOpenIcon className="h-5 w-5 text-primary-600" />,
+	},
+];
+
+const randomIcons = [
+	{
+		id: 1,
+		icon: <AcademicCapIcon className="h-5 w-5 text-primary-600" />,
+	},
+	{
+		id: 2,
+		icon: <BoltIcon className="h-5 w-5 text-primary-600" />,
+	},
+	{
+		id: 3,
+		icon: <BookmarkSquareIcon className="h-5 w-5 text-primary-600" />,
+	},
+	{
+		id: 4,
+		icon: (
+			<BuildingLibraryIcon className="h-5 w-5 text-primary-600" />
+		),
+	},
+	{
+		id: 5,
+		icon: <CakeIcon className="h-5 w-5 text-primary-600" />,
+	},
+	{
+		id: 6,
+		icon: <CloudIcon className="h-5 w-5 text-primary-600" />,
+	},
+	{
+		id: 7,
+		icon: <FireIcon className="h-5 w-5 text-primary-600" />,
+	},
+	{
+		id: 8,
+		icon: (
+			<GlobeEuropeAfricaIcon className="h-5 w-5 text-primary-600" />
+		),
+	},
+	{
+		id: 9,
+		icon: <GiftIcon className="h-5 w-5 text-primary-600" />,
+	},
+	{
+		id: 10,
+		icon: <LightBulbIcon className="h-5 w-5 text-primary-600" />,
+	},
+	{
+		id: 11,
+		icon: <PuzzlePieceIcon className="h-5 w-5 text-primary-600" />,
+	},
+	{
+		id: 12,
+		icon: <RocketLaunchIcon className="h-5 w-5 text-primary-600" />,
+	},
+	{
+		id: 13,
+		icon: <StarIcon className="h-5 w-5 text-primary-600" />,
+	},
+];
+
 function SideNavigation() {
 	const pathname = usePathname();
 	const { shelves, isLoading, error } = useShelves();
+
+	const getShelfIcon = (shelfName) => {
+		const predefinedIcon = icons.find(
+			(icon) => icon.name.toLowerCase() === shelfName.toLowerCase()
+		);
+
+		return predefinedIcon
+			? predefinedIcon.icon
+			: randomIcons[Math.floor(Math.random() * randomIcons.length)]
+					.icon;
+	};
 
 	return (
 		<nav className="border-r border-primary-900 z-100">
@@ -68,7 +166,8 @@ function SideNavigation() {
 										: ""
 								}`}
 							>
-								<span className="h-5 w-5 text-primary-600" />
+								<span>{getShelfIcon(shelf.name)}</span>
+
 								<span>{shelf.name}</span>
 							</Link>
 						</li>
