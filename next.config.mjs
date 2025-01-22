@@ -1,21 +1,22 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
-	/*
-      images: {
-		// unoptimized: true,
+
+	images: {
 		remotePatterns: [
 			{
-				protocol: "https",
-				hostname: "wycjbzjtochxxulzwehw.supabase.co",
+				protocol: "http",
+				hostname: "books.google.com",
 				port: "",
-				pathname: "/storage/v1/object/public/cabin-images/**",
+				pathname: "/books/content/**", // Match all paths under "/books/content/"
+			},
+			{
+				protocol: "https",
+				hostname: "books.google.com",
+				pathname: "/books/content/**",
 			},
 		],
 	},
-     */
 };
 
 export default nextConfig;
-
-// change all of this later when you actually have something in supabase

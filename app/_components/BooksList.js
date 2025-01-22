@@ -4,7 +4,10 @@ import BookCard from "./BookCard";
 function BooksList({ books, onSelectBook }) {
 	const { isModalOpen, openModal, closeModal } = useModal();
 	return (
-		<ul className="mt-4 flex flex-wrap gap-4">
+		<ul
+			// className="mt-4 flex flex-wrap gap-4"
+			className="grid grid-cols-[repeat(auto-fit,_minmax(12rem,_1fr))] gap-6 place-items-center"
+		>
 			{books.map((book) => (
 				<BookCard
 					key={book.id}
