@@ -1,55 +1,24 @@
-import { useEffect, useState } from "react";
-import Modal from "./Modal";
-import { addToShelf } from "../_lib/api";
+import { useModal } from "../_utils/modalContext";
 
-function BookCard({ book, onSelectBook }) {
-	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [shelves, setShelves] = useState([]);
+function BookCard({ book }) {
+	// const [isModalOpen, setIsModalOpen] = useState(false);
+	const { isModalOpen, openModal, closeModal } = useModal();
 
-	//fetch shelves from db
-	useEffect(() => {
-		async function fetchShelves() {
-			try {
-				const res = await fetch("../api/get-shelves");
-				// Log status for debugging
-				console.log("Response status:", res.status);
+	// async function handleAddToShelf(shelfId, book) {
+	// 	//call api to add book to shelf
+	// 	try {
+	// 		await addToShelf(shelfId, book);
 
-				if (!res.ok) {
-					throw new Error(await res.text()); // Log the error body
-				}
-
-				const data = await res.json();
-				console.log("Shelves:", data);
-
-				setShelves(data);
-			} catch (err) {
-				console.log("Error fetching shelves", err.message);
-			}
-		}
-		isModalOpen && fetchShelves();
-	}, [isModalOpen]);
-
-	async function handleAddToShelf(shelfId, book) {
-		//call api to add book to shelf
-		try {
-			await addToShelf(shelfId, book);
-
-			console.log("Book added to shelf");
-			setIsModalOpen(false);
-		} catch (err) {
-			console.log("Error adding book to shelf", err.message);
-		}
-	}
-
-	function onOpenModal(e) {
-		e.stopPropagation();
-		setIsModalOpen(true);
-	}
-
+	// 		console.log("Book added to shelf");
+	// 		setIsModalOpen(false);
+	// 	} catch (err) {
+	// 		console.log("Error adding book to shelf", err.message);
+	// 	}
+	// }
+	console.log("Modal State:", isModalOpen); // Log the modal state
 	return (
 		<>
 			<li
-				// onClick={() => onSelectBook(book)}
 				key={book.id}
 				className="flex flex-col items-center bg-white shadow-lg rounded-lg p-4 max-w-xs"
 			>
@@ -66,7 +35,7 @@ function BookCard({ book, onSelectBook }) {
 				/>
 				<button
 					className="bg-primary-700 text-primary-50 rounded-lg px-2 py-1"
-					onClick={onOpenModal}
+					onClick={() => openModal(book)}
 				>
 					Add to shelf
 				</button>
@@ -74,31 +43,6 @@ function BookCard({ book, onSelectBook }) {
 					See more
 				</button>
 			</li>
-			{/* <Modal
-				isOpen={isModalOpen}
-				onClose={() => setIsModalOpen(false)}
-			>
-				<ul>
-					{shelves.map((shelf) => (
-						<li
-							key={shelf._id}
-							className="p-2 border-b border-primary-800"
-							onClick={(e) => {
-								e.stopPropagation();
-								handleAddToShelf(shelf._id, book);
-							}}
-						>
-							{shelf.name}
-						</li>
-					))}
-				</ul>
-				<button onClick={() => setIsModalOpen(false)}>X</button>
-			</Modal> */}
-
-			<Modal
-				isOpen={isModalOpen}
-				onClose={() => setIsModalOpen(false)}
-			/>
 		</>
 	);
 }
