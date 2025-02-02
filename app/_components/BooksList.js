@@ -6,7 +6,7 @@ function BooksList({ books, onSelectBook }) {
 	return (
 		<ul
 			// className="mt-4 flex flex-wrap gap-4"
-			className="grid grid-cols-[repeat(auto-fit,_minmax(12rem,_1fr))] gap-6 place-items-center"
+			className="grid grid-cols-[repeat(auto-fit,_minmax(12rem,_1fr))] gap-6 place-items-center mt-7"
 		>
 			{books.map((book) => (
 				<BookCard
