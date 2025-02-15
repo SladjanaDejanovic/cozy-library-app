@@ -5,17 +5,7 @@ function BookCard({ book }) {
 	const { isModalOpen, openModal, closeModal } = useModal();
 	const imageUrl = book.volumeInfo.imageLinks?.thumbnail;
 
-	// async function handleAddToShelf(shelfId, book) {
-	// 	//call api to add book to shelf
-	// 	try {
-	// 		await addToShelf(shelfId, book);
-
-	// 		console.log("Book added to shelf");
-	// 		setIsModalOpen(false);
-	// 	} catch (err) {
-	// 		console.log("Error adding book to shelf", err.message);
-	// 	}
-	// }
+	
 
 	return (
 		<>
